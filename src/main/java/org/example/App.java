@@ -6,23 +6,21 @@ import java.util.Scanner;
 
 
 public class App {
-    public static Scanner scanner = new Scanner(System.in);
     public static Prices prices = new Prices();
-
-
     public static void main(String[] args) {
-        menu();
+       Scanner scanner = new Scanner(System.in);
+        menu(scanner);
     }
 
 
 
 
     //code for menu
-    public static void menu() {
+    public static void menu(Scanner scanner) {
         boolean loopController = true;
         while (loopController) {
             printMenu();
-            loopController = menuSwitch();
+            loopController = menuSwitch(scanner);
         }
     }
 
@@ -42,13 +40,13 @@ public class App {
     }
 
 
-    public static boolean menuSwitch() {
+    public static boolean menuSwitch(Scanner scanner) {
         boolean loopController = true;
         String input = scanner.nextLine();
         switch (input.toLowerCase()) {
             case "e" -> loopController = false;
             case "1" -> {
-                inmatning();
+                inmatning(scanner);
                 bubble();
             }
             case "2" -> minMaxMedel();
@@ -61,7 +59,7 @@ public class App {
 
 
     //case 1
-    public static void inmatning() {
+    public static void inmatning(Scanner scanner) {
         int input;
         System.out.println("Hur mycket kostade elen vid:");
         for (int i = 0; i < 24; i++) {
